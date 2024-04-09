@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+        <bean id="book" class="org.canisminor.spring6.iocxml.di.Book">
+            <property name="name" value="The Tragedy of Hamlet, Prince of Denmark"></property>
+            <property name="author" value="William Shakespeare"></property>
+            <property name="others">
+                <null></null>
+            </property>
+        </bean>
+
+        <bean id="book2" class="org.canisminor.spring6.iocxml.di.Book">
+            <constructor-arg name="name" value="The Tragedy of Hamlet, Prince of Denmark"></constructor-arg>
+            <constructor-arg name="author" value="William Shakespeare"></constructor-arg>
+        </bean>
+
+        <!--xml实体-->
+        <bean id="book3" class="org.canisminor.spring6.iocxml.di.Book">
+            <property name="name" value="The Tragedy of Hamlet, Prince of Denmark"></property>
+            <property name="author" value="William Shakespeare"></property>
+            <property name="others" value="a&lt;b a&gt;b"></property>
+        </bean>
+
+        <!--CDATA-->
+        <bean id="book4" class="org.canisminor.spring6.iocxml.di.Book">
+            <property name="name" value="The Tragedy of Hamlet, Prince of Denmark"></property>
+            <property name="author" value="William Shakespeare"></property>
+            <property name="others">
+                <value><![CDATA[a < b]]></value>
+            </property>
+        </bean>
+</beans>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/util
+       http://www.springframework.org/schema/util/spring-util.xsd
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="studentp" class="org.canisminor.spring6.iocxml.dimap.Student"
+    p:sid="101" p:sname="Eric" p:lessonList-ref="lessonList" p:tMap-ref="tMap"></bean>
+
+    <bean id="student" class="org.canisminor.spring6.iocxml.dimap.Student">
+        <property name="sid" value="100"></property>
+        <property name="sname" value="Alice"></property>
+        <property name="lessonList" ref="lessonList"></property>
+        <property name="tMap" ref="tMap"></property>
+    </bean>
+
+    <bean id="teacher1" class="org.canisminor.spring6.iocxml.dimap.Teacher">
+        <property name="tid" value="10010"></property>
+        <property name="tname" value="Bob"></property>
+    </bean>
+    <bean id="teacher2" class="org.canisminor.spring6.iocxml.dimap.Teacher">
+        <property name="tid" value="10011"></property>
+        <property name="tname" value="Dave"></property>
+    </bean>
+
+    <bean id="lesson1" class="org.canisminor.spring6.iocxml.dimap.Lesson">
+        <property name="lname" value="Java"></property>
+    </bean>
+    <bean id="lesson2" class="org.canisminor.spring6.iocxml.dimap.Lesson">
+        <property name="lname" value="C++"></property>
+    </bean>
+
+    <util:list id="lessonList">
+        <ref bean="lesson1"></ref>
+        <ref bean="lesson2"></ref>
+    </util:list>
+
+    <util:map id="tMap">
+        <entry>
+            <key>
+                <value>10010</value>
+            </key>
+            <ref bean="teacher1"></ref>
+        </entry>
+        <entry>
+            <key>
+                <value>10011</value>
+            </key>
+            <ref bean="teacher2"></ref>
+        </entry>
+    </util:map>
+</beans>
